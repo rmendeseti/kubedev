@@ -1,0 +1,27 @@
+# qlqr host manda para o service especificado
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-subdomain
+spec:
+  rules:
+  - host: blue.mila.eti.br
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: blue-service
+            port:
+              number: 80
+  - host: green.mila.eti.br
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: green-service
+            port:
+              number: 80              

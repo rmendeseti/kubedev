@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: nginx-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: nginx
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: busy
+    ports:
+    - port: 80
+      protocol: TCP
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: busy
+    ports:
+    - port: 80
+      protocol: TCP
