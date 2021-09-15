@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: mila.eti.br
+  - host: local.rmendes.eti.br
     http:
       paths:
       - path: /blue
